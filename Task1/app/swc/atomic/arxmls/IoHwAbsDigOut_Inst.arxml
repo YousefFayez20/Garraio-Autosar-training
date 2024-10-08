@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<AUTOSAR xmlns="http://autosar.org/schema/r4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_00046.xsd">
+  <AR-PACKAGES>
+    <AR-PACKAGE>
+      <SHORT-NAME>IoHwAbsDigOut_Inst_package</SHORT-NAME>
+      <ELEMENTS>
+        <ECU-ABSTRACTION-SW-COMPONENT-TYPE>
+          <SHORT-NAME>IoHwAbsDigOut_Inst</SHORT-NAME>
+          <PORTS>
+            <P-PORT-PROTOTYPE>
+              <SHORT-NAME>SetOutputStatus</SHORT-NAME>
+              <PROVIDED-COM-SPECS>
+                <SERVER-COM-SPEC>
+                  <OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/Interfaces/CsIf_DigOut/CsIf_DigOut_SetSt</OPERATION-REF>
+                </SERVER-COM-SPEC>
+              </PROVIDED-COM-SPECS>
+              <PROVIDED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/Interfaces/CsIf_DigOut</PROVIDED-INTERFACE-TREF>
+            </P-PORT-PROTOTYPE>
+            <R-PORT-PROTOTYPE>
+              <SHORT-NAME>IsHighPolarity</SHORT-NAME>
+              <REQUIRED-COM-SPECS>
+                <PARAMETER-REQUIRE-COM-SPEC>
+                  <INIT-VALUE>
+                    <NUMERICAL-VALUE-SPECIFICATION>
+                      <SHORT-LABEL>IsHighPoarity_parm</SHORT-LABEL>
+                      <VALUE>0</VALUE>
+                    </NUMERICAL-VALUE-SPECIFICATION>
+                  </INIT-VALUE>
+                  <PARAMETER-REF DEST="PARAMETER-DATA-PROTOTYPE">/Interfaces/ParmIf_ChCalibration/IsHighPoarity_parm</PARAMETER-REF>
+                </PARAMETER-REQUIRE-COM-SPEC>
+              </REQUIRED-COM-SPECS>
+              <REQUIRED-INTERFACE-TREF DEST="PARAMETER-INTERFACE">/Interfaces/ParmIf_ChCalibration</REQUIRED-INTERFACE-TREF>
+            </R-PORT-PROTOTYPE>
+             <R-PORT-PROTOTYPE>
+              <SHORT-NAME>ChEnable</SHORT-NAME>
+              <REQUIRED-COM-SPECS>
+                <PARAMETER-REQUIRE-COM-SPEC>
+                  <INIT-VALUE>
+                    <NUMERICAL-VALUE-SPECIFICATION>
+                      <SHORT-LABEL>ChEnable_Parm</SHORT-LABEL>
+                      <VALUE>0</VALUE>
+                    </NUMERICAL-VALUE-SPECIFICATION>
+                  </INIT-VALUE>
+                  <PARAMETER-REF DEST="PARAMETER-DATA-PROTOTYPE">/Interfaces/ParmIf_ChEnable/ChEnable_Parm</PARAMETER-REF>
+                </PARAMETER-REQUIRE-COM-SPEC>
+              </REQUIRED-COM-SPECS>
+              <REQUIRED-INTERFACE-TREF DEST="PARAMETER-INTERFACE">/Interfaces/ParmIf_ChEnable</REQUIRED-INTERFACE-TREF>
+            </R-PORT-PROTOTYPE>
+          </PORTS>
+          <INTERNAL-BEHAVIORS>
+            <SWC-INTERNAL-BEHAVIOR>
+              <SHORT-NAME>IoHwAbsDigOut_Inst_internal_behavior</SHORT-NAME>
+              <EVENTS>
+                <OPERATION-INVOKED-EVENT>
+                  <SHORT-NAME>Operation_Invoked_Event_1_event</SHORT-NAME>
+                  <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/IoHwAbsDigOut_Inst_package/IoHwAbsDigOut_Inst/IoHwAbsDigOut_Inst_internal_behavior/Runnable_SetOutpSt</START-ON-EVENT-REF>
+                  <OPERATION-IREF>
+                    <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/IoHwAbsDigOut_Inst_package/IoHwAbsDigOut_Inst/SetOutputStatus</CONTEXT-P-PORT-REF>
+                    <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/Interfaces/CsIf_DigOut/CsIf_DigOut_SetSt</TARGET-PROVIDED-OPERATION-REF>
+                  </OPERATION-IREF>
+                </OPERATION-INVOKED-EVENT>
+              </EVENTS>
+              <RUNNABLES>
+                <RUNNABLE-ENTITY>
+                  <SHORT-NAME>Runnable_SetOutpSt</SHORT-NAME>
+                  <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                  <CAN-BE-INVOKED-CONCURRENTLY>true</CAN-BE-INVOKED-CONCURRENTLY>
+                  <PARAMETER-ACCESSS>
+                    <PARAMETER-ACCESS>
+                      <SHORT-NAME>Runnable_SetOutpSt_ChEnable_ChEnable_Parm</SHORT-NAME>
+                      <ACCESSED-PARAMETER>
+                        <AUTOSAR-PARAMETER-IREF>
+                          <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/IoHwAbsDigOut_Inst_package/IoHwAbsDigOut_Inst/ChEnable</PORT-PROTOTYPE-REF>
+                          <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/Interfaces/ParmIf_ChEnable/ChEnable_Parm</TARGET-DATA-PROTOTYPE-REF>
+                        </AUTOSAR-PARAMETER-IREF>
+                      </ACCESSED-PARAMETER>
+                    </PARAMETER-ACCESS>
+                    <PARAMETER-ACCESS>
+                      <SHORT-NAME>Runnable_SetOutpSt_IsHighPolarity_IsHighPoarity_parm</SHORT-NAME>
+                      <ACCESSED-PARAMETER>
+                        <AUTOSAR-PARAMETER-IREF>
+                          <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/IoHwAbsDigOut_Inst_package/IoHwAbsDigOut_Inst/IsHighPolarity</PORT-PROTOTYPE-REF>
+                          <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/Interfaces/ParmIf_ChCalibration/IsHighPoarity_parm</TARGET-DATA-PROTOTYPE-REF>
+                        </AUTOSAR-PARAMETER-IREF>
+                      </ACCESSED-PARAMETER>
+                    </PARAMETER-ACCESS>
+                  </PARAMETER-ACCESSS>
+                  <SYMBOL>Runnable_SetOutpSt</SYMBOL>
+                </RUNNABLE-ENTITY>
+              </RUNNABLES>
+            </SWC-INTERNAL-BEHAVIOR>
+          </INTERNAL-BEHAVIORS>
+        </ECU-ABSTRACTION-SW-COMPONENT-TYPE>
+      </ELEMENTS>
+    </AR-PACKAGE>
+  </AR-PACKAGES>
+</AUTOSAR>
